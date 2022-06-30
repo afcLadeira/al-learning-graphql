@@ -1,0 +1,29 @@
+{
+  "name": "al-learning-graphql",
+  "version": "1.0.0",
+  "description": "testing graphql stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afcLadeira/al-learning-graphql.git"
+  },
+  "keywords": [
+    "graphql",
+    "apollo",
+    "react"
+  ],
+  "author": "André Ladeira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afcLadeira/al-learning-graphql/issues"
+  },
+  "homepage": "https://github.com/afcLadeira/al-learning-graphql#readme",
+  "dependencies": {
+    "apollo-server": "^3.9.0",
+    "graphql": "^16.5.0"
+  }
+}
