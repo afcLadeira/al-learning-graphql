@@ -38,11 +38,26 @@ type Country {
   emojiU: String!
   }
 
+  input StringQueryOperatorInput {
+  eq: String
+  ne: String
+  in: [String]
+  nin: [String]
+  regex: String
+  glob: String
+}
+
+input AnimalsFilterInput {
+  name: StringQueryOperatorInput
+  animal_type: StringQueryOperatorInput
+  geo_range: StringQueryOperatorInput
+}
+
 
  type Query {
     countries: [Country!]!
     country(code: ID!): Country
-    animals: [Animal]!
+    animals(filter: AnimalsFilterInput): [Animal]!
  }
 
 

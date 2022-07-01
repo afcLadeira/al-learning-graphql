@@ -4,6 +4,7 @@ import {
   CREATE_ANIMAL,
   DELETE_ANIMAL,
   GET_ANIMALS,
+  GET_ANIMALS_FILTERED,
   UPDATE_ANIMAL,
 } from "../../graphql/queries";
 
@@ -15,10 +16,27 @@ export default function Animals() {
 
   const { loading, error, data, refetch } = useQuery(GET_ANIMALS);
 
-  const [deleteAnimal] = useMutation(DELETE_ANIMAL);
-  const [updateAnimal] = useMutation(UPDATE_ANIMAL);
+  const {data : mammals } = useQuery(GET_ANIMALS_FILTERED , {
+    variables: { input: { animal_type : {eq : "Mammal"} }},
+  });
 
-  const [createAnimal] = useMutation(CREATE_ANIMAL);
+
+  const refetchAnimals = {
+    refetchQueries: [{ query: GET_ANIMALS }, "GetAnimals"],
+  };
+
+  const [deleteAnimal] = useMutation(DELETE_ANIMAL, refetchAnimals);
+  const [updateAnimal] = useMutation(UPDATE_ANIMAL, refetchAnimals);
+
+  const [createAnimal] = useMutation(CREATE_ANIMAL , {
+    update(cache, result) {
+    console.log("🚀 ~ file: index.js ~ line 27 ~ update ~ result", result)
+    console.log("🚀 ~ file: index.js ~ line 27 ~ update ~ cache", cache)
+
+        // Update the cache as an approximation of server-side mutation effects
+    
+      }
+  });
 
   const handleCreateAnimal = async () => {
     createAnimal({
@@ -35,6 +53,8 @@ export default function Animals() {
   };
 
   const onClickEdit = ({ name, animal_type, geo_range, image_link, id }) => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0;
     setForm((prevState) => ({ name, animal_type, geo_range, id }));
     setIsEditing(true);
   };
@@ -56,7 +76,6 @@ export default function Animals() {
     });
     clearForm();
     setIsEditing(false);
-    refetch();
   };
 
   const handleDeleteAnimal = async (id) => {
@@ -65,8 +84,6 @@ export default function Animals() {
         deleteAnimalId: id,
       },
     });
-
-    refetch();
   };
 
   const handleChange = (e) => {
@@ -133,7 +150,7 @@ export default function Animals() {
       {loading && <h1>loading</h1>}
       {error && <h1>{JSON.stringify(error)}</h1>}
 
-      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent:'space-between', alignContent:'flex-start', alignItems: "center" }}>
         {data?.animals &&
           data.animals.map(
             ({ name, animal_type, geo_range, image_link, id }) => (

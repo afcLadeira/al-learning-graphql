@@ -24,15 +24,29 @@ const resolvers = {
         (country) => country.code === args.code
       );
     },
-    animals() {
-      return animalsDB.animals.sort((a,b) => a.id -b.id);
+    animals(parent, args, context, info) {
+      let input = args;
+
+      if (input?.filter) {
+        return animalsDB.animals
+          .filter((animal) => animal.animal_type == input.filter.animal_type.eq)
+          .sort((a, b) => a.id - b.id);
+      }
+
+      return animalsDB.animals.sort((a, b) => a.id - b.id);
     },
   },
   Mutation: {
     createAnimal: async (parent, arg) => {
       const animal = arg.input;
 
-      animalsDB.setAnimals([...animalsDB.animals, {...animal, id:animalsDB.animals.length ? animalsDB.animals.length + 1 : 1 }]);
+      animalsDB.setAnimals([
+        ...animalsDB.animals,
+        {
+          ...animal,
+          id: animalsDB.animals.length ? animalsDB.animals.length + 1 : 1,
+        },
+      ]);
 
       await fsPromises.writeFile(
         path.join(__dirname, "../data/animals.json"),
@@ -45,12 +59,11 @@ const resolvers = {
 
       let findAnimal = animalsDB.animals.find((an) => an.id == animal.id);
 
-    //   for(let key in animal) {
-    //     findAnimal[key] = animal[key]
-    //   }
+      //   for(let key in animal) {
+      //     findAnimal[key] = animal[key]
+      //   }
 
       if (findAnimal) {
-
         findAnimal = { ...findAnimal, ...animal };
 
         let otherAnimals = animalsDB.animals.filter((an) => an.id != animal.id);
@@ -64,23 +77,20 @@ const resolvers = {
       return findAnimal;
     },
     deleteAnimal: async (parent, arg) => {
-        const animalId = arg.id;
+      const animalId = arg.id;
 
-        let otherAnimals = animalsDB.animals.filter((an) => an.id != animalId);
-  
-     
-          animalsDB.setAnimals([...otherAnimals]);
-  
-          await fsPromises.writeFile(
-            path.join(__dirname, "../data/animals.json"),
-            JSON.stringify(animalsDB.animals)
-          );
-        
-        return { id: animalId};
-    }
+      let otherAnimals = animalsDB.animals.filter((an) => an.id != animalId);
 
+      animalsDB.setAnimals([...otherAnimals]);
+
+      await fsPromises.writeFile(
+        path.join(__dirname, "../data/animals.json"),
+        JSON.stringify(animalsDB.animals)
+      );
+
+      return { id: animalId };
+    },
   },
-
 };
 
 module.exports = { resolvers };

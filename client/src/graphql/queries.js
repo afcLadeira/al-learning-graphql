@@ -46,6 +46,14 @@ export const GET_ANIMALS = gql`
   }
 `;
 
+export const GET_ANIMALS_FILTERED = gql`
+query GetAnimalsFiltered($input : AnimalsFilterInput) {
+  animals(filter: $input) {name}
+}
+
+`
+
+
 export const CREATE_ANIMAL = gql`
   mutation CreateAnimal($input: CreateAnimalInput!) {
     createAnimal(input: $input) {
