@@ -19,7 +19,13 @@ type Animal {
   image_link: String!
   }
 
+fragment NameParts on Country {
 
+  name
+
+  code
+
+}
 
 type Country {
   code: ID!
@@ -44,11 +50,23 @@ type Country {
   name: String!
   animal_type: String!
   geo_range: String = "Unknown"
-  image_link: String!
+  image_link: String = "no image url"
  }
+
+ input UpdateAnimalInput {
+
+    id:ID!
+  name: String
+  animal_type: String
+  geo_range: String
+  image_link: String
+ }
+
 
 type Mutation {
     createAnimal(input: CreateAnimalInput!) : Animal!
+    updateAnimal(input: UpdateAnimalInput) : Animal!
+    deleteAnimal(id: ID!) : Animal
 }
  
 `;

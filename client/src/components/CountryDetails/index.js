@@ -27,7 +27,9 @@ export function CountryDetails({ code }) {
               <h1 className="text-2xl font-bold text-gray-700">
                 {data.country.name} ({data.country.code})
               </h1>
-              <p className="text-sm mt-2 text-gray-700">{data.country.capital} (+{data.country.phone})</p>
+              <p className="text-sm mt-2 text-gray-700">
+                {data.country.capital} (+{data.country.phone})
+              </p>
 
               <div className="mt-4 mb-2 flex justify-between pl-4 pr-2">
                 <button className="block text-xl font-semibold text-gray-700 cursor-auto">

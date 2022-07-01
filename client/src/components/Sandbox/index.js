@@ -20,14 +20,18 @@ export default function Sandbox() {
 
   if (loading) return <p>Loading...</p>;
 
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error</p>;
 
   return (
     <div>
-      <h1>Animals</h1>
+      <h1 className="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">
+        Animals
+      </h1>
       <Animals></Animals>
       <hr></hr>
-      <h1>Countries</h1>
+      <h1 className="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">
+        Countries
+      </h1>
       {countryCode && <CountryDetails code={countryCode}></CountryDetails>}
 
       {data && <Table data={data} handleClickEmoji={handleClickEmoji}></Table>}

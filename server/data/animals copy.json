@@ -1,0 +1,106 @@
+[
+  {
+    "name": "Steller's Sea Eagle",
+    "latin_name": "Haliaeetus pelagicus",
+    "animal_type": "Bird",
+    "active_time": "Diurnal",
+    "length_min": "2.7",
+    "length_max": "3",
+    "weight_min": "13",
+    "weight_max": "20",
+    "lifespan": "25",
+    "habitat": "Coastal cliffs and forests near rivers and lakes",
+    "diet": "Primarily salmon; some carrion and other small animals",
+    "geo_range": "Russia, Japan, China, and Korea",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/5/55/Adult_Steller's_sea_eagle_fishing.jpg",
+    "id": 2
+  },
+  {
+    "name": "Angolan Colobus Monkey",
+    "latin_name": "Colobus angolensis",
+    "animal_type": "Mammal",
+    "active_time": "Diurnal",
+    "length_min": "1.2",
+    "length_max": "2.2",
+    "weight_min": "13",
+    "weight_max": "25",
+    "lifespan": "18",
+    "habitat": "Forest and savannah",
+    "diet": "Leaves, fruit, and seeds",
+    "geo_range": "Tanzania",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Colobus_angolensis.jpg",
+    "id": 3
+  },
+  {
+    "id": 4,
+    "name": "test animal 2",
+    "animal_type": "test type 2",
+    "geo_range": "Unknown",
+    "image_link": "test image url"
+  },
+  {
+    "name": "Fire-bellied newt",
+    "latin_name": "Cynops pyrrhogaster pyrrhogaster",
+    "animal_type": "update test",
+    "active_time": "Nocturnal",
+    "length_min": "0.35",
+    "length_max": "0.5",
+    "weight_min": "0.004",
+    "weight_max": "0.004",
+    "lifespan": "25",
+    "habitat": "Ponds, stream pools and lakes",
+    "diet": "Aquatic invertebrates",
+    "geo_range": "Japan",
+    "image_link": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Cynops_ensicauda_popei.jpg",
+    "id": "1"
+  },
+  {
+    "name": "test animal",
+    "animal_type": "test type",
+    "geo_range": "Unknown",
+    "image_link": "test image url",
+    "id": 6
+  },
+  {
+    "name": "test animal",
+    "animal_type": "test type",
+    "geo_range": "Unknown",
+    "image_link": "test image url",
+    "id": 7
+  },
+  {
+    "name": "test animal",
+    "animal_type": "test type",
+    "geo_range": "Unknown",
+    "image_link": "test image url",
+    "id": 8
+  },
+  {
+    "name": "test animal",
+    "animal_type": "test type",
+    "geo_range": "Unknown",
+    "image_link": "test image url",
+    "id": 9
+  },
+  {
+    "name": "test animal",
+    "animal_type": "test type",
+    "geo_range": "Unknown",
+    "image_link": "test image url",
+    "id": 10
+  },
+  {
+    "name": "test animal",
+    "animal_type": "test type",
+    "geo_range": "Unknown",
+    "image_link": "test image url",
+    "id": 11
+  },
+  {
+    "name": "test animal",
+    "animal_type": "test type",
+    "geo_range": "Unknown",
+    "image_link": "test image url",
+    "id": 12
+  }
+]
